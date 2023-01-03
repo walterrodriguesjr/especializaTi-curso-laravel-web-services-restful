@@ -78,4 +78,51 @@
 
 03-API de Produtos 
 
+14-Model e Tabelas de Produtos API laravel 
+-produtos seram relacionadas a categoria
+-um produto tem uma categoria, e uma categoria pode ter vários produtos 
+-relacionamento de um para muito, oneToMany 
+-criada model e migration de Product 
+-configurada a migration de Product
+-rodada a migration 
+
+15-Factory Produtos API laravel
+-criar seeders para criar usuário, UsersTableSeeder.php
+    php artisan make:seeder UsersTableSeeder
+-configurada a function run() de UsersTableSeeder.php, para enviar os dados para o banco 
+-rodado o seeder 
+    php artisan db:seed
+-criando o Factory de Product, serve para inserir dados fake 
+    php artisan make:factory ProductFactory , NÃO DEU CERTO, foi feito pelo tinker, modelo do curso de eloquent 
+
+16-definir relacionamento tabela Produtos e Categorias 
+-criado a chave estrangeira de produtos com categorias (nas migrations)
+-não usados seeders, foi usado comandos direto no tinker para gerar dados fakes, configurado em: 
+    Product, foi configurado os dados a serem gerados em ProductFactory.php, e não nos seeders 
+
+17-listar produtos API laravel 
+-criado o controller de Product 
+    php artisan make:controller Api/\ProductController --resource
+    usado o método construtor de Product, para não precisar ficar chamando dentro de cada função ou 
+        parâmetro por injeção de dependência 
+-criado o método index() de ProductController
+-criado a Route, get, de ProductController
+
+18-paginar produtos API 
+-usando em index(), de ProductController, o método paginate(), customizando o total, já que o default é 15 
+-navegando por página desta paginação na URL
+    http://127.0.0.1:8989/api/products?page=2
+
+19-filtros API laravel 
+-a função de filtro(busca), é feito direto na model de Product, o método: getResults()
+-em seguida a função getResults() é chamada no ProductController
+
+20-cadastrar produtos API 
+-feito o método store() em ProductController
+-feito a Route, post, ProductController, store 
+
+21-editar produtos API laravel 
+-feito o método store($id) em ProductController
+-feito a Route, post, ProductController, store, parametro id
+
 
