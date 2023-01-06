@@ -51,7 +51,12 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = $this->product::find($id);
+        if(!$product)
+        return response()->json(['error' => 'Not Found'], 404);
+
+        return $product;
+
     }
 
 
@@ -80,6 +85,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = $this->product::find($id);
+        if(!$product)
+        return response()->json(['error' => 'Not Found'], 404);
+
+        $product->delete();
     }
 }
